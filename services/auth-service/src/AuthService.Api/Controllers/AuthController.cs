@@ -25,10 +25,10 @@ public class AuthController : ControllerBase
         
         if (result.IsSuccess)
         {
-            return Ok(result.Value);
+            return Ok(result.Data);
         }
 
-        return BadRequest(result.Error);
+        return BadRequest(result.Message);
     }
 
     [HttpPost("register")]
@@ -38,10 +38,10 @@ public class AuthController : ControllerBase
         
         if (result.IsSuccess)
         {
-            return CreatedAtAction(nameof(Register), result.Value);
+            return CreatedAtAction(nameof(Register), result.User);
         }
 
-        return BadRequest(result.Error);
+        return BadRequest(result.Message);
     }
 
     [HttpPost("refresh-token")]
@@ -51,10 +51,10 @@ public class AuthController : ControllerBase
         
         if (result.IsSuccess)
         {
-            return Ok(result.Value);
+            return Ok(new { result.AccessToken, result.RefreshToken });
         }
 
-        return BadRequest(result.Error);
+        return BadRequest(result.Message);
     }
 
     [HttpPost("logout")]
@@ -67,6 +67,6 @@ public class AuthController : ControllerBase
             return Ok(new { message = "Logged out successfully" });
         }
 
-        return BadRequest(result.Error);
+        return BadRequest(result.Message);
     }
 }

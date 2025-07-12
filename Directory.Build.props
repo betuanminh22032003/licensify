@@ -14,6 +14,9 @@
     <!-- <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)DDD.CleanArchitecture.ruleset</CodeAnalysisRuleSet> -->
     <_SkipUpgradeNetAnalyzersNuGetWarning>true</_SkipUpgradeNetAnalyzersNuGetWarning>
     <GenerateEditorConfigFile>false</GenerateEditorConfigFile>
+    <DisableImplicitAnalyzerConfigIncludes>true</DisableImplicitAnalyzerConfigIncludes>
+    <SkipAnalyzers>true</SkipAnalyzers>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
   </PropertyGroup>
 
   <!-- Global Package References -->
@@ -36,8 +39,10 @@
 
   <!-- Global Analyzer Config -->
   <ItemGroup>
+    <!-- Temporarily disable to fix multiple analyzer config error
     <GlobalAnalyzerConfigFiles Include="$(MSBuildThisFileDirectory).globalconfig" />
     <EditorConfigFiles Include="$(MSBuildThisFileDirectory).editorconfig" />
+    -->
   </ItemGroup>
 
   <!-- Domain Layer Specific Rules -->

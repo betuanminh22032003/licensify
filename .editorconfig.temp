@@ -1,0 +1,1 @@
+root = true[*]charset = utf-8end_of_line = crlfinsert_final_newline = trueindent_style = spaceindent_size = 4trim_trailing_whitespace = true[*.{cs,csx}]indent_size = 4

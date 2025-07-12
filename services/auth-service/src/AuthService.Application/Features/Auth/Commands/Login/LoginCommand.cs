@@ -1,12 +1,19 @@
 using MediatR;
 
-namespace AuthService.Application.Commands.Auth;
+namespace AuthService.Application.Features.Auth.Commands.Login;
 
-public record LoginCommand : IRequest<LoginResponse>
+public record LoginCommand : IRequest<LoginCommandResult>
 {
     public string Email { get; init; } = string.Empty;
     public string Password { get; init; } = string.Empty;
     public string? IpAddress { get; init; }
+}
+
+public class LoginCommandResult
+{
+    public bool IsSuccess { get; set; }
+    public string Message { get; set; } = string.Empty;
+    public LoginResponse? Data { get; set; }
 }
 
 public record LoginResponse

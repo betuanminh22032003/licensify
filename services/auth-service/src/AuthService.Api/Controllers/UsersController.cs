@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using AuthService.Application.Features.Users.Queries.GetUserById;
-using AuthService.Application.Features.Users.Queries.GetAllUsers;
-using AuthService.Application.Features.Users.Commands.UpdateUser;
-using AuthService.Application.Features.Users.Commands.DeactivateUser;
+using AuthService.Application.Features.User.Queries.Get;
+using AuthService.Application.Features.User.Queries.GetAll;
+using AuthService.Application.Features.User.Commands.Update;
+using AuthService.Application.Features.User.Commands.Delete;
 
 namespace AuthService.Api.Controllers;
 
@@ -21,33 +21,33 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(Guid id)
+    public async Task<IActionResult> GetById(int id)
     {
-        var query = new GetUserByIdQuery(id);
+        var query = new GetUserQuery { Id = id };
         var result = await _mediator.Send(query);
         
         if (result.IsSuccess)
         {
-            return Ok(result.Value);
+            return Ok(result.User);
         }
 
-        return NotFound(result.Error);
+        return NotFound(result.Message);
     }
 
     [HttpGet]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAll()
     {
-        var query = new GetAllUsersQuery();
+        var query = new GetUsersQuery();
         var result = await _mediator.Send(query);
         
-        return Ok(result.Value);
+        return Ok(result.Users);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateUserCommand command)
+    public async Task<IActionResult> Update(int id, [FromBody] UpdateUserCommand command)
     {
-        if (id != command.UserId)
+        if (id != command.Id)
         {
             return BadRequest("User ID mismatch");
         }
@@ -56,24 +56,24 @@ public class UsersController : ControllerBase
         
         if (result.IsSuccess)
         {
-            return Ok(result.Value);
+            return Ok(result.User);
         }
 
-        return BadRequest(result.Error);
+        return BadRequest(result.Message);
     }
 
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> Deactivate(Guid id)
+    public async Task<IActionResult> Delete(int id)
     {
-        var command = new DeactivateUserCommand(id);
+        var command = new DeleteUserCommand { Id = id };
         var result = await _mediator.Send(command);
         
         if (result.IsSuccess)
         {
-            return Ok(new { message = "User deactivated successfully" });
+            return Ok(new { message = "User deleted successfully" });
         }
 
-        return BadRequest(result.Error);
+        return BadRequest(result.Message);
     }
 }
