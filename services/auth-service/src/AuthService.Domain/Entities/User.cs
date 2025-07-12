@@ -150,4 +150,9 @@ public class User : BaseEntity
         LastLoginAt = DateTime.UtcNow;
         UpdateTimestamp();
     }
+
+    public void AddUserLoggedInEvent(string ipAddress)
+    {
+        AddDomainEvent(new UserLoggedInEvent(Id, Email, ipAddress));
+    }
 }

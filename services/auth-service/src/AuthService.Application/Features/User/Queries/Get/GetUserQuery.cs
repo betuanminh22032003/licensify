@@ -5,7 +5,7 @@ namespace AuthService.Application.Features.User.Queries.Get;
 
 public class GetUserQuery : IRequest<GetUserQueryResult>
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 }
 
 public class GetUserQueryResult
