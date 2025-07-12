@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LicenseService.Domain\LicenseService.Domain.csproj" />
+    <ProjectReference Include="..\AuditService.Domain\AuditService.Domain.csproj" />
     <ProjectReference Include="..\..\..\..\shared\Licensify.Shared.csproj" />
   </ItemGroup>
 

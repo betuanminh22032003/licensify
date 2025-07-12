@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Start all",
+    "Projects": [
+      {
+        "Path": "services\\auth-service\\src\\AuthService.Api\\AuthService.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "APIGateway\\APIGateway.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
