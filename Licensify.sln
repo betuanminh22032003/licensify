@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{0BC21DE9-3684-4BAE-8A5D-A836BCC71B61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth-service", "auth-service", "{87F94467-F6CB-408A-A3AD-E32EEFDB5DA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Domain", "services\auth-service\src\AuthService.Domain\AuthService.Domain.csproj", "{197CFEC8-D3C6-40F5-AC9C-C59CC25712D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Application", "services\auth-service\src\AuthService.Application\AuthService.Application.csproj", "{2E3F0CB3-9C2C-43BC-A7D4-ABF57F2D0499}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Infrastructure", "services\auth-service\src\AuthService.Infrastructure\AuthService.Infrastructure.csproj", "{94340E68-138D-4337-AAB3-7E254E8FA485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Api", "services\auth-service\src\AuthService.Api\AuthService.Api.csproj", "{68A8A8DD-A01C-4651-976D-FC2F5772BF1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licensify.Shared", "shared\Licensify.Shared.csproj", "{423B3FD4-767E-4809-B11C-413CE1CEC6F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "product-service", "product-service", "{A201039A-39D7-4210-BEF7-1B924C342373}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{197CFEC8-D3C6-40F5-AC9C-C59CC25712D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{197CFEC8-D3C6-40F5-AC9C-C59CC25712D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{197CFEC8-D3C6-40F5-AC9C-C59CC25712D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{197CFEC8-D3C6-40F5-AC9C-C59CC25712D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E3F0CB3-9C2C-43BC-A7D4-ABF57F2D0499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E3F0CB3-9C2C-43BC-A7D4-ABF57F2D0499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E3F0CB3-9C2C-43BC-A7D4-ABF57F2D0499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E3F0CB3-9C2C-43BC-A7D4-ABF57F2D0499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94340E68-138D-4337-AAB3-7E254E8FA485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94340E68-138D-4337-AAB3-7E254E8FA485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94340E68-138D-4337-AAB3-7E254E8FA485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94340E68-138D-4337-AAB3-7E254E8FA485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68A8A8DD-A01C-4651-976D-FC2F5772BF1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A8A8DD-A01C-4651-976D-FC2F5772BF1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A8A8DD-A01C-4651-976D-FC2F5772BF1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A8A8DD-A01C-4651-976D-FC2F5772BF1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423B3FD4-767E-4809-B11C-413CE1CEC6F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423B3FD4-767E-4809-B11C-413CE1CEC6F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423B3FD4-767E-4809-B11C-413CE1CEC6F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423B3FD4-767E-4809-B11C-413CE1CEC6F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87F94467-F6CB-408A-A3AD-E32EEFDB5DA9} = {0BC21DE9-3684-4BAE-8A5D-A836BCC71B61}
+		{197CFEC8-D3C6-40F5-AC9C-C59CC25712D6} = {87F94467-F6CB-408A-A3AD-E32EEFDB5DA9}
+		{2E3F0CB3-9C2C-43BC-A7D4-ABF57F2D0499} = {87F94467-F6CB-408A-A3AD-E32EEFDB5DA9}
+		{94340E68-138D-4337-AAB3-7E254E8FA485} = {87F94467-F6CB-408A-A3AD-E32EEFDB5DA9}
+		{68A8A8DD-A01C-4651-976D-FC2F5772BF1B} = {87F94467-F6CB-408A-A3AD-E32EEFDB5DA9}
+		{A201039A-39D7-4210-BEF7-1B924C342373} = {0BC21DE9-3684-4BAE-8A5D-A836BCC71B61}
+	EndGlobalSection
+EndGlobal

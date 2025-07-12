@@ -1,0 +1,146 @@
+is_global = true
+
+# .NET Code Style Rules for DDD + Clean Architecture
+
+# Language rules
+dotnet_style_qualification_for_field = false:warning
+dotnet_style_qualification_for_property = false:warning
+dotnet_style_qualification_for_method = false:warning
+dotnet_style_qualification_for_event = false:warning
+
+dotnet_style_predefined_type_for_locals_parameters_members = true:warning
+dotnet_style_predefined_type_for_member_access = true:warning
+
+dotnet_style_require_accessibility_modifiers = always:warning
+dotnet_style_readonly_field = true:warning
+
+dotnet_style_object_initializer = true:suggestion
+dotnet_style_collection_initializer = true:suggestion
+dotnet_style_coalesce_expression = true:suggestion
+dotnet_style_null_propagation = true:suggestion
+dotnet_style_explicit_tuple_names = true:suggestion
+
+# C# Code Style Rules
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_object_creation = true
+csharp_new_line_before_members_in_anonymous_types = true
+
+csharp_indent_case_contents = true
+csharp_indent_switch_labels = true
+csharp_indent_labels = flush_left
+
+csharp_space_around_binary_operators = before_and_after
+csharp_space_around_declaration_statements = false
+csharp_space_before_open_square_brackets = false
+csharp_space_between_empty_square_brackets = false
+csharp_space_between_square_brackets = false
+
+# Organize usings
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false
+
+# Expression-level preferences
+csharp_prefer_braces = true:warning
+csharp_style_deconstructed_variable_declaration = true:suggestion
+csharp_prefer_simple_default_expression = true:suggestion
+csharp_style_pattern_local_over_anonymous_function = true:suggestion
+csharp_style_inlined_variable_declaration = true:suggestion
+
+# Naming conventions
+
+# PascalCase for public members
+dotnet_naming_rule.public_members_must_be_capitalized.severity = warning
+dotnet_naming_rule.public_members_must_be_capitalized.symbols = public_symbols
+dotnet_naming_rule.public_members_must_be_capitalized.style = first_word_upper_case_style
+
+dotnet_naming_symbols.public_symbols.applicable_kinds = property,method,field,event,delegate
+dotnet_naming_symbols.public_symbols.applicable_accessibilities = public
+dotnet_naming_symbols.public_symbols.required_modifiers = 
+
+dotnet_naming_style.first_word_upper_case_style.capitalization = pascal_case
+
+# Interfaces must start with I
+dotnet_naming_rule.interfaces_must_be_prefixed_with_i.severity = error
+dotnet_naming_rule.interfaces_must_be_prefixed_with_i.symbols = interface_symbols
+dotnet_naming_rule.interfaces_must_be_prefixed_with_i.style = prefix_interface_with_i_style
+
+dotnet_naming_symbols.interface_symbols.applicable_kinds = interface
+dotnet_naming_symbols.interface_symbols.applicable_accessibilities = *
+
+dotnet_naming_style.prefix_interface_with_i_style.required_prefix = I
+dotnet_naming_style.prefix_interface_with_i_style.capitalization = pascal_case
+
+# Private fields must start with underscore
+dotnet_naming_rule.private_fields_must_be_prefixed_with_underscore.severity = warning
+dotnet_naming_rule.private_fields_must_be_prefixed_with_underscore.symbols = private_field_symbols
+dotnet_naming_rule.private_fields_must_be_prefixed_with_underscore.style = prefix_private_field_with_underscore_style
+
+dotnet_naming_symbols.private_field_symbols.applicable_kinds = field
+dotnet_naming_symbols.private_field_symbols.applicable_accessibilities = private
+
+dotnet_naming_style.prefix_private_field_with_underscore_style.required_prefix = _
+dotnet_naming_style.prefix_private_field_with_underscore_style.capitalization = camel_case
+
+# Constants must be PascalCase
+dotnet_naming_rule.constants_must_be_capitalized.severity = warning
+dotnet_naming_rule.constants_must_be_capitalized.symbols = constant_symbols
+dotnet_naming_rule.constants_must_be_capitalized.style = first_word_upper_case_style
+
+dotnet_naming_symbols.constant_symbols.applicable_kinds = field
+dotnet_naming_symbols.constant_symbols.required_modifiers = const
+
+# Local variables must be camelCase
+dotnet_naming_rule.local_variables_must_be_camel_case.severity = warning
+dotnet_naming_rule.local_variables_must_be_camel_case.symbols = local_variable_symbols
+dotnet_naming_rule.local_variables_must_be_camel_case.style = camel_case_style
+
+dotnet_naming_symbols.local_variable_symbols.applicable_kinds = local
+
+dotnet_naming_style.camel_case_style.capitalization = camel_case
+
+# Classes, structs, enums, delegates must be PascalCase
+dotnet_naming_rule.types_must_be_capitalized.severity = error
+dotnet_naming_rule.types_must_be_capitalized.symbols = type_symbols
+dotnet_naming_rule.types_must_be_capitalized.style = first_word_upper_case_style
+
+dotnet_naming_symbols.type_symbols.applicable_kinds = class,struct,enum,delegate
+dotnet_naming_symbols.type_symbols.applicable_accessibilities = *
+
+# DDD Specific Rules
+
+# Domain Events must end with "Event"
+dotnet_naming_rule.domain_events_must_end_with_event.severity = error
+dotnet_naming_rule.domain_events_must_end_with_event.symbols = domain_event_symbols
+dotnet_naming_rule.domain_events_must_end_with_event.style = domain_event_style
+
+dotnet_naming_symbols.domain_event_symbols.applicable_kinds = class
+dotnet_naming_symbols.domain_event_symbols.applicable_accessibilities = *
+dotnet_naming_symbols.domain_event_symbols.required_modifiers =
+
+dotnet_naming_style.domain_event_style.required_suffix = Event
+dotnet_naming_style.domain_event_style.capitalization = pascal_case
+
+# Commands must end with "Command"
+dotnet_naming_rule.commands_must_end_with_command.severity = error
+dotnet_naming_rule.commands_must_end_with_command.symbols = command_symbols
+dotnet_naming_rule.commands_must_end_with_command.style = command_style
+
+dotnet_naming_symbols.command_symbols.applicable_kinds = class
+dotnet_naming_symbols.command_symbols.applicable_accessibilities = *
+
+dotnet_naming_style.command_style.required_suffix = Command
+dotnet_naming_style.command_style.capitalization = pascal_case
+
+# Queries must end with "Query"
+dotnet_naming_rule.queries_must_end_with_query.severity = error
+dotnet_naming_rule.queries_must_end_with_query.symbols = query_symbols
+dotnet_naming_rule.queries_must_end_with_query.style = query_style
+
+dotnet_naming_symbols.query_symbols.applicable_kinds = class
+dotnet_naming_symbols.query_symbols.applicable_accessibilities = *
+
+dotnet_naming_style.query_style.required_suffix = Query
+dotnet_naming_style.query_style.capitalization = pascal_case

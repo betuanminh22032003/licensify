@@ -1,0 +1,43 @@
+### Auth Service API Tests
+
+# Variables
+@baseUrl = http://localhost:5001/api
+@contentType = application/json
+
+### 1. Health Check
+GET {{baseUrl}}/../health
+
+### 2. Login with default admin
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "admin@licensify.com",
+  "password": "Admin123!"
+}
+
+### 3. Get current user (requires token from login)
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{token}}
+
+### 4. Refresh token
+POST {{baseUrl}}/auth/refresh
+Content-Type: {{contentType}}
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### 5. Logout
+POST {{baseUrl}}/auth/logout
+Authorization: Bearer {{token}}
+Content-Type: {{contentType}}
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### 6. Revoke all tokens
+POST {{baseUrl}}/auth/revoke-all
+Authorization: Bearer {{token}}
+Content-Type: {{contentType}}

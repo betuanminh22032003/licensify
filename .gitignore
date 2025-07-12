@@ -1,7 +1,101 @@
-/bin/
-/obj/
-/.env
-node_modules/
-*.db
+# ================================
+# OS-specific
+# ================================
+.DS_Store
+Thumbs.db
+
+# ================================
+# Build artifacts
+# ================================
+bin/
+obj/
+
+# ================================
+# .NET
+# ================================
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.cache
+*.vs/
+*.dbmdl
+
+# ================================
+# Environment files
+# ================================
+.env
+.env.*
+
+# ================================
+# Logs & database
+# ================================
 *.log
+*.db
+*.sqlite
+logs/
+LogFiles/
+
+# ================================
+# Node.js (Frontend)
+# ================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ================================
+# React / Next.js
+# ================================
+.next/
+out/
+dist/
+build/
+
+# ================================
+# VSCode
+# ================================
 .vscode/
+
+# ================================
+# Docker
+# ================================
+docker-compose.override.yml
+**/.docker/
+
+# ================================
+# Kubernetes / Helm
+# ================================
+*.tgz
+charts/*.tgz
+helm-release.yaml
+.kube/
+.helm/
+
+# ================================
+# PostgreSQL dumps
+# ================================
+*.sql
+*.dump
+
+# ================================
+# Redis
+# ================================
+dump.rdb
+appendonly.aof
+
+# ================================
+# Serilog / Elasticsearch (Optional)
+# ================================
+serilog.json
+elasticsearch.log
+
+# ================================
+# Others
+# ================================
+coverage/
+*.coverage
+*.coveragejson
+TestResults/
+__pycache__/

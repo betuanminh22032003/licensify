@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="DDD Clean Architecture Rules" Description="Custom rules for Domain-Driven Design and Clean Architecture" ToolsVersion="16.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <!-- Documentation Rules -->
+    <Rule Id="SA1600" Action="Warning" /> <!-- Elements should be documented -->
+    <Rule Id="SA1601" Action="Warning" /> <!-- Partial elements should be documented -->
+    <Rule Id="SA1602" Action="Warning" /> <!-- Enumeration items should be documented -->
+    
+    <!-- Naming Rules -->
+    <Rule Id="SA1300" Action="Error" /> <!-- Element should begin with upper-case letter -->
+    <Rule Id="SA1301" Action="Error" /> <!-- Element should begin with lower-case letter -->
+    <Rule Id="SA1302" Action="Error" /> <!-- Interface names should begin with I -->
+    <Rule Id="SA1303" Action="Error" /> <!-- Const field names should begin with upper-case letter -->
+    <Rule Id="SA1304" Action="Error" /> <!-- Non-private readonly fields should begin with upper-case letter -->
+    <Rule Id="SA1305" Action="Warning" /> <!-- Field names should not use Hungarian notation -->
+    <Rule Id="SA1306" Action="Error" /> <!-- Field names should begin with lower-case letter -->
+    <Rule Id="SA1307" Action="Error" /> <!-- Accessible fields should begin with upper-case letter -->
+    <Rule Id="SA1308" Action="Error" /> <!-- Variable names should not be prefixed -->
+    <Rule Id="SA1309" Action="None" /> <!-- Field names should not begin with underscore -->
+    <Rule Id="SA1310" Action="Error" /> <!-- Field names should not contain underscore -->
+    <Rule Id="SA1311" Action="Error" /> <!-- Static readonly fields should begin with upper-case letter -->
+    <Rule Id="SA1312" Action="Error" /> <!-- Variable names should begin with lower-case letter -->
+    <Rule Id="SA1313" Action="Error" /> <!-- Parameter names should begin with lower-case letter -->
+    <Rule Id="SA1314" Action="Error" /> <!-- Type parameter names should begin with T -->
+    
+    <!-- Maintainability Rules -->
+    <Rule Id="SA1400" Action="Error" /> <!-- Access modifier should be declared -->
+    <Rule Id="SA1401" Action="Error" /> <!-- Fields should be private -->
+    <Rule Id="SA1402" Action="Error" /> <!-- File may only contain a single type -->
+    <Rule Id="SA1403" Action="Error" /> <!-- File may only contain a single namespace -->
+    <Rule Id="SA1404" Action="Error" /> <!-- Code analysis suppression should have justification -->
+    <Rule Id="SA1405" Action="Error" /> <!-- Debug.Assert should provide message text -->
+    <Rule Id="SA1406" Action="Error" /> <!-- Debug.Fail should provide message text -->
+    <Rule Id="SA1407" Action="Error" /> <!-- Arithmetic expressions should declare precedence -->
+    <Rule Id="SA1408" Action="Error" /> <!-- Conditional expressions should declare precedence -->
+    <Rule Id="SA1409" Action="Error" /> <!-- Remove unnecessary code -->
+    <Rule Id="SA1410" Action="Error" /> <!-- Remove delegate parens when possible -->
+    <Rule Id="SA1411" Action="Error" /> <!-- Attribute constructor should not use unnecessary parenthesis -->
+    <Rule Id="SA1412" Action="Warning" /> <!-- Store files as UTF-8 with byte order mark -->
+    <Rule Id="SA1413" Action="Error" /> <!-- Use trailing comma in multi-line initializers -->
+    
+    <!-- Layout Rules -->
+    <Rule Id="SA1500" Action="Error" /> <!-- Braces for multi-line statements should not share line -->
+    <Rule Id="SA1501" Action="Error" /> <!-- Statement should not be on a single line -->
+    <Rule Id="SA1502" Action="Error" /> <!-- Element should not be on a single line -->
+    <Rule Id="SA1503" Action="Error" /> <!-- Braces should not be omitted -->
+    <Rule Id="SA1504" Action="Error" /> <!-- All accessors should be single-line or multi-line -->
+    <Rule Id="SA1505" Action="Error" /> <!-- Opening braces should not be followed by blank line -->
+    <Rule Id="SA1506" Action="Error" /> <!-- Element documentation headers should not be followed by blank line -->
+    <Rule Id="SA1507" Action="Error" /> <!-- Code should not contain multiple blank lines in a row -->
+    <Rule Id="SA1508" Action="Error" /> <!-- Closing braces should not be preceded by blank line -->
+    <Rule Id="SA1509" Action="Error" /> <!-- Opening braces should not be preceded by blank line -->
+    <Rule Id="SA1510" Action="Error" /> <!-- Chained statement blocks should not be preceded by blank line -->
+    <Rule Id="SA1511" Action="Error" /> <!-- While-do footer should not be preceded by blank line -->
+    <Rule Id="SA1512" Action="Error" /> <!-- Single-line comments should not be followed by blank line -->
+    <Rule Id="SA1513" Action="Error" /> <!-- Closing brace should be followed by blank line -->
+    <Rule Id="SA1514" Action="Error" /> <!-- Element documentation header should be preceded by blank line -->
+    <Rule Id="SA1515" Action="Error" /> <!-- Single-line comment should be preceded by blank line -->
+    <Rule Id="SA1516" Action="Error" /> <!-- Elements should be separated by blank line -->
+    <Rule Id="SA1517" Action="Error" /> <!-- Code should not contain blank lines at start of file -->
+    <Rule Id="SA1518" Action="Error" /> <!-- Use line endings correctly at end of file -->
+    
+    <!-- Ordering Rules -->
+    <Rule Id="SA1200" Action="Error" /> <!-- Using directives should be placed correctly -->
+    <Rule Id="SA1201" Action="Error" /> <!-- Elements should appear in correct order -->
+    <Rule Id="SA1202" Action="Error" /> <!-- Elements should be ordered by access -->
+    <Rule Id="SA1203" Action="Error" /> <!-- Constants should appear before fields -->
+    <Rule Id="SA1204" Action="Error" /> <!-- Static elements should appear before instance elements -->
+    <Rule Id="SA1205" Action="Error" /> <!-- Partial elements should declare access -->
+    <Rule Id="SA1206" Action="Error" /> <!-- Declaration keywords should follow order -->
+    <Rule Id="SA1207" Action="Error" /> <!-- Protected should come before internal -->
+    <Rule Id="SA1208" Action="Error" /> <!-- System using directives should be placed before other using directives -->
+    <Rule Id="SA1209" Action="Error" /> <!-- Using alias directives should be placed after other using directives -->
+    <Rule Id="SA1210" Action="Error" /> <!-- Using directives should be ordered alphabetically by namespace -->
+    <Rule Id="SA1211" Action="Error" /> <!-- Using alias directives should be ordered alphabetically by alias name -->
+    <Rule Id="SA1212" Action="Error" /> <!-- Property accessors should follow order -->
+    <Rule Id="SA1213" Action="Error" /> <!-- Event accessors should follow order -->
+    <Rule Id="SA1214" Action="Error" /> <!-- Readonly fields should appear before non-readonly fields -->
+    <Rule Id="SA1215" Action="Error" /> <!-- Instance readonly fields should appear before instance non-readonly fields -->
+    <Rule Id="SA1216" Action="Error" /> <!-- Using static directives should be placed at the correct location -->
+    <Rule Id="SA1217" Action="Error" /> <!-- Using static directives should be ordered alphabetically -->
+  </Rules>
+  
+  <!-- Domain-Driven Design Specific Rules -->
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
+    <!-- Enforce immutability in Value Objects -->
+    <Rule Id="CA1051" Action="Error" /> <!-- Do not declare visible instance fields -->
+    <Rule Id="CA1052" Action="Error" /> <!-- Static holder types should be Static or NotInheritable -->
+    <Rule Id="CA1054" Action="Warning" /> <!-- URI-like parameters should not be strings -->
+    <Rule Id="CA1055" Action="Warning" /> <!-- URI-like return values should not be strings -->
+    <Rule Id="CA1056" Action="Warning" /> <!-- URI-like properties should not be strings -->
+    
+    <!-- Security Rules -->
+    <Rule Id="CA2100" Action="Error" /> <!-- Review SQL queries for security vulnerabilities -->
+    <Rule Id="CA2109" Action="Error" /> <!-- Review visible event handlers -->
+    <Rule Id="CA2119" Action="Error" /> <!-- Seal methods that satisfy private interfaces -->
+    <Rule Id="CA2153" Action="Error" /> <!-- Do Not Catch Corrupted State Exceptions -->
+    <Rule Id="CA2300" Action="Error" /> <!-- Do not use insecure deserializer BinaryFormatter -->
+    <Rule Id="CA2301" Action="Error" /> <!-- Do not call BinaryFormatter.Deserialize without first setting BinaryFormatter.Binder -->
+    <Rule Id="CA2302" Action="Error" /> <!-- Ensure BinaryFormatter.Binder is set before calling BinaryFormatter.Deserialize -->
+    <Rule Id="CA2305" Action="Error" /> <!-- Do not use insecure deserializer LosFormatter -->
+    <Rule Id="CA2310" Action="Error" /> <!-- Do not use insecure deserializer NetDataContractSerializer -->
+    <Rule Id="CA2311" Action="Error" /> <!-- Do not deserialize without first setting NetDataContractSerializer.Binder -->
+    <Rule Id="CA2312" Action="Error" /> <!-- Ensure NetDataContractSerializer.Binder is set before deserializing -->
+    <Rule Id="CA2315" Action="Error" /> <!-- Do not use insecure deserializer ObjectStateFormatter -->
+    <Rule Id="CA2321" Action="Error" /> <!-- Do not deserialize with JavaScriptSerializer using a SimpleTypeResolver -->
+    <Rule Id="CA2322" Action="Error" /> <!-- Ensure JavaScriptSerializer is not initialized with SimpleTypeResolver before deserializing -->
+  </Rules>
+  
+  <!-- Performance Rules -->
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Performance">
+    <Rule Id="CA1800" Action="Warning" /> <!-- Do not cast unnecessarily -->
+    <Rule Id="CA1801" Action="Warning" /> <!-- Review unused parameters -->
+    <Rule Id="CA1802" Action="Warning" /> <!-- Use literals where appropriate -->
+    <Rule Id="CA1804" Action="Warning" /> <!-- Remove unused locals -->
+    <Rule Id="CA1805" Action="Warning" /> <!-- Do not initialize unnecessarily -->
+    <Rule Id="CA1806" Action="Warning" /> <!-- Do not ignore method results -->
+    <Rule Id="CA1810" Action="Warning" /> <!-- Initialize reference type static fields inline -->
+    <Rule Id="CA1812" Action="Warning" /> <!-- Avoid uninstantiated internal classes -->
+    <Rule Id="CA1813" Action="Warning" /> <!-- Avoid unsealed attributes -->
+    <Rule Id="CA1814" Action="Warning" /> <!-- Prefer jagged arrays over multidimensional -->
+    <Rule Id="CA1815" Action="Warning" /> <!-- Override equals and operator equals on value types -->
+    <Rule Id="CA1819" Action="Warning" /> <!-- Properties should not return arrays -->
+    <Rule Id="CA1820" Action="Warning" /> <!-- Test for empty strings using string length -->
+    <Rule Id="CA1821" Action="Warning" /> <!-- Remove empty Finalizers -->
+    <Rule Id="CA1822" Action="Info" /> <!-- Mark members as static -->
+    <Rule Id="CA1823" Action="Warning" /> <!-- Avoid unused private fields -->
+    <Rule Id="CA1824" Action="Warning" /> <!-- Mark assemblies with NeutralResourcesLanguageAttribute -->
+    <Rule Id="CA1825" Action="Warning" /> <!-- Avoid zero-length array allocations -->
+  </Rules>
+</RuleSet>

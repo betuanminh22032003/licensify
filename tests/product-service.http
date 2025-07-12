@@ -1,0 +1,56 @@
+### Product Service API Tests
+
+# Variables
+@baseUrl = http://localhost:5002/api
+@authBaseUrl = http://localhost:5001/api
+@contentType = application/json
+
+### 1. First, login to get token
+POST {{authBaseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "admin@licensify.com",
+  "password": "Admin123!"
+}
+
+### 2. Health Check
+GET {{baseUrl}}/../health
+
+### 3. Get all products
+GET {{baseUrl}}/products
+Authorization: Bearer {{token}}
+
+### 4. Get products with search
+GET {{baseUrl}}/products?name=Sample&page=1&pageSize=10
+Authorization: Bearer {{token}}
+
+### 5. Get product by ID
+GET {{baseUrl}}/products/22222222-2222-2222-2222-222222222222
+Authorization: Bearer {{token}}
+
+### 6. Create new product
+POST {{baseUrl}}/products
+Authorization: Bearer {{token}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Test Product",
+  "version": "1.0.0",
+  "description": "A test product created via API"
+}
+
+### 7. Update product (use ID from create response)
+PUT {{baseUrl}}/products/{{productId}}
+Authorization: Bearer {{token}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Updated Test Product",
+  "version": "1.0.1",
+  "description": "Updated description"
+}
+
+### 8. Delete product (Admin only)
+DELETE {{baseUrl}}/products/{{productId}}
+Authorization: Bearer {{token}}
