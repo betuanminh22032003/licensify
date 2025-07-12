@@ -87,6 +87,28 @@ Validates DDD and Clean Architecture conventions across the entire codebase.
 - ⚡ **CQRS** (CQRS001-CQRS002): Command/Query separation
 - 🔒 **Security** (SEC001): Security best practices
 
+### 🟢 API Management Scripts
+
+#### run-all-services.ps1
+**Simple script to run dotnet run for all services**
+
+```powershell
+# Basic usage - Run all services
+.\scripts\run-all-services.ps1
+
+# Start with dependencies (PostgreSQL, Redis, RabbitMQ)  
+.\scripts\run-all-services.ps1 -WithDependencies
+
+# Skip build step (faster startup)
+.\scripts\run-all-services.ps1 -SkipBuild
+```
+
+**Features:**
+- 🚀 Simple `dotnet run` for each service
+- 🪟 Opens each service in separate PowerShell window
+- 🔗 Shows service URLs and testing commands
+- 🐳 Optional Docker dependencies startup
+
 ## 🎯 Common Workflows
 
 ### 🆕 Setting Up New Development Environment
