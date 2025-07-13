@@ -1,0 +1,181 @@
+### Audit Service API Tests
+@baseUrl = http://localhost:5003
+@authToken = Bearer your_jwt_token_here
+
+### Health Check
+GET {{baseUrl}}/health
+
+### 1. Create audit log entry
+POST {{baseUrl}}/api/auditlogs
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "userId": "123e4567-e89b-12d3-a456-426614174001",
+  "userName": "john.doe@example.com",
+  "entityType": "User",
+  "entityId": "123e4567-e89b-12d3-a456-426614174001",
+  "action": "Login",
+  "description": "User login successful",
+  "severity": "Information",
+  "ipAddress": "192.168.1.100",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+  "source": "AuthService"
+}
+
+### 2. Get audit log by ID
+GET {{baseUrl}}/api/auditlogs/123e4567-e89b-12d3-a456-426614174000
+Authorization: {{authToken}}
+
+### 3. Get all audit logs (paginated)
+GET {{baseUrl}}/api/auditlogs?skip=0&take=50
+Authorization: {{authToken}}
+
+### 4. Get audit logs by entity (User)
+GET {{baseUrl}}/api/auditlogs/entity/User/123e4567-e89b-12d3-a456-426614174001
+Authorization: {{authToken}}
+
+### 5. Get audit logs by entity (Product)
+GET {{baseUrl}}/api/auditlogs/entity/Product/123e4567-e89b-12d3-a456-426614174000
+Authorization: {{authToken}}
+
+### 6. Get audit logs by entity (License)
+GET {{baseUrl}}/api/auditlogs/entity/License/123e4567-e89b-12d3-a456-426614174002
+Authorization: {{authToken}}
+
+### 7. Get audit logs by user
+GET {{baseUrl}}/api/auditlogs/user/123e4567-e89b-12d3-a456-426614174001
+Authorization: {{authToken}}
+
+### 8. Get audit logs by action (Login)
+GET {{baseUrl}}/api/auditlogs/action/Login
+Authorization: {{authToken}}
+
+### 9. Get audit logs by action (Create)
+GET {{baseUrl}}/api/auditlogs/action/Create
+Authorization: {{authToken}}
+
+### 10. Get audit logs by action (Delete)
+GET {{baseUrl}}/api/auditlogs/action/Delete
+Authorization: {{authToken}}
+
+### 11. Get audit logs by date range
+GET {{baseUrl}}/api/auditlogs/date-range?from=2025-07-01T00:00:00Z&to=2025-07-31T23:59:59Z
+Authorization: {{authToken}}
+
+### 12. Get audit logs by severity (Error)
+GET {{baseUrl}}/api/auditlogs/severity/Error
+Authorization: {{authToken}}
+
+### 13. Get audit logs by severity (Critical)
+GET {{baseUrl}}/api/auditlogs/severity/Critical
+Authorization: {{authToken}}
+
+### Sample audit log creation for different scenarios:
+
+### User logout audit
+POST {{baseUrl}}/api/auditlogs
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "userId": "123e4567-e89b-12d3-a456-426614174001",
+  "userName": "john.doe@example.com",
+  "entityType": "User",
+  "entityId": "123e4567-e89b-12d3-a456-426614174001",
+  "action": "Logout",
+  "description": "User logged out",
+  "severity": "Information",
+  "ipAddress": "192.168.1.100",
+  "source": "AuthService"
+}
+
+### Product creation audit
+POST {{baseUrl}}/api/auditlogs
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "userId": "123e4567-e89b-12d3-a456-426614174001",
+  "userName": "admin@licensify.com",
+  "entityType": "Product",
+  "entityId": "123e4567-e89b-12d3-a456-426614174000",
+  "action": "Create",
+  "description": "New product created: Premium License",
+  "severity": "Information",
+  "newValues": "{\"name\":\"Premium License\",\"version\":\"1.0.0\",\"price\":99.99}",
+  "ipAddress": "192.168.1.100",
+  "source": "ProductService"
+}
+
+### License validation audit
+POST {{baseUrl}}/api/auditlogs
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "entityType": "License",
+  "entityId": "123e4567-e89b-12d3-a456-426614174002",
+  "action": "Validate",
+  "description": "License validation successful",
+  "severity": "Information",
+  "ipAddress": "192.168.1.200",
+  "source": "LicenseService",
+  "additionalData": "{\"licenseKey\":\"LIC-ABCD-1234-EFGH-5678\",\"valid\":true}"
+}
+
+### Failed login attempt
+POST {{baseUrl}}/api/auditlogs
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "userName": "unknown@example.com",
+  "entityType": "User",
+  "action": "Login",
+  "description": "Failed login attempt for unknown@example.com",
+  "severity": "Warning",
+  "ipAddress": "192.168.1.100",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+  "source": "AuthService"
+}
+
+### System error audit
+POST {{baseUrl}}/api/auditlogs
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "entityType": "System",
+  "action": "Configure",
+  "description": "Database connection failed",
+  "severity": "Error",
+  "source": "System",
+  "additionalData": "{\"error\":\"Connection timeout\",\"database\":\"licensify_db\"}"
+}
+
+### Example responses:
+
+### Successful audit log creation:
+# {
+#   "auditId": "123e4567-e89b-12d3-a456-426614174000",
+#   "message": "Audit log created successfully",
+#   "timestamp": "2025-07-13T10:30:00Z"
+# }
+
+### Audit log query response:
+# [
+#   {
+#     "id": "123e4567-e89b-12d3-a456-426614174000",
+#     "userId": "123e4567-e89b-12d3-a456-426614174001",
+#     "userName": "john.doe@example.com",
+#     "entityType": "User",
+#     "entityId": "123e4567-e89b-12d3-a456-426614174001",
+#     "action": "Login",
+#     "description": "User login successful",
+#     "severity": "Information",
+#     "timestamp": "2025-07-13T10:30:00Z",
+#     "ipAddress": "192.168.1.100",
+#     "source": "AuthService"
+#   }
+# ]

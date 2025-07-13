@@ -1,0 +1,116 @@
+### License Service API Tests
+@baseUrl = http://localhost:5002
+@authToken = Bearer your_jwt_token_here
+
+### Health Check
+GET {{baseUrl}}/health
+
+### 1. Create a new license
+POST {{baseUrl}}/api/licenses
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "productId": "123e4567-e89b-12d3-a456-426614174000",
+  "customerId": "123e4567-e89b-12d3-a456-426614174001",
+  "customerName": "John Doe",
+  "customerEmail": "john.doe@example.com",
+  "maxUsers": 5,
+  "expiresAt": "2025-12-31T23:59:59Z",
+  "features": ["feature1", "feature2"]
+}
+
+### 2. Get license by ID
+GET {{baseUrl}}/api/licenses/123e4567-e89b-12d3-a456-426614174002
+Authorization: {{authToken}}
+
+### 3. Get license by key
+GET {{baseUrl}}/api/licenses/by-key/LIC-ABCD-1234-EFGH-5678
+Authorization: {{authToken}}
+
+### 4. Get licenses by customer
+GET {{baseUrl}}/api/licenses/customer/123e4567-e89b-12d3-a456-426614174001
+Authorization: {{authToken}}
+
+### 5. Get licenses by product
+GET {{baseUrl}}/api/licenses/product/123e4567-e89b-12d3-a456-426614174000
+Authorization: {{authToken}}
+
+### 6. Get licenses by status
+GET {{baseUrl}}/api/licenses/status/Active
+Authorization: {{authToken}}
+
+### 7. Get expiring licenses (next 30 days)
+GET {{baseUrl}}/api/licenses/expiring
+Authorization: {{authToken}}
+
+### 8. Get expiring licenses (custom date)
+GET {{baseUrl}}/api/licenses/expiring?beforeDate=2025-08-01T00:00:00Z
+Authorization: {{authToken}}
+
+### 9. Get expired licenses
+GET {{baseUrl}}/api/licenses/expired
+Authorization: {{authToken}}
+
+### 10. Activate license
+PUT {{baseUrl}}/api/licenses/123e4567-e89b-12d3-a456-426614174002/activate
+Authorization: {{authToken}}
+
+### 11. Suspend license
+PUT {{baseUrl}}/api/licenses/123e4567-e89b-12d3-a456-426614174002/suspend
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "reason": "Payment overdue"
+}
+
+### 12. Revoke license
+PUT {{baseUrl}}/api/licenses/123e4567-e89b-12d3-a456-426614174002/revoke
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "reason": "License violation"
+}
+
+### 13. Extend license
+PUT {{baseUrl}}/api/licenses/123e4567-e89b-12d3-a456-426614174002/extend
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "newExpirationDate": "2026-12-31T23:59:59Z"
+}
+
+### 14. Validate license (public endpoint)
+POST {{baseUrl}}/api/licenses/validate
+Content-Type: application/json
+
+{
+  "licenseKey": "LIC-ABCD-1234-EFGH-5678"
+}
+
+### Example responses:
+
+### Successful license creation response:
+# {
+#   "licenseId": "123e4567-e89b-12d3-a456-426614174002",
+#   "licenseKey": "LIC-ABCD-1234-EFGH-5678",
+#   "status": "Active",
+#   "message": "License created successfully"
+# }
+
+### License validation response (valid):
+# {
+#   "isValid": true,
+#   "expiresAt": "2025-12-31T23:59:59Z",
+#   "remainingUsers": 3
+# }
+
+### License validation response (invalid):
+# {
+#   "isValid": false,
+#   "message": "License has expired",
+#   "expiresAt": "2024-12-31T23:59:59Z"
+# }
