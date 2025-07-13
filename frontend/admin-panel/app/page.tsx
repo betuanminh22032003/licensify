@@ -9,11 +9,10 @@ import {
   Spinner,
   Avatar
 } from '@nextui-org/react'
-import { LogIn, Eye, EyeOff } from 'lucide-react'
 import { useAuthStore } from '@/store/authStore'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
-
+import { LogIn, Eye, EyeOff } from 'lucide-react'
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -68,7 +67,7 @@ export default function LoginPage() {
               label="Email"
               placeholder="admin@licensify.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
               isRequired
               variant="bordered"
             />
@@ -78,7 +77,7 @@ export default function LoginPage() {
               label="Password"
               placeholder="Enter your password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               isRequired
               variant="bordered"
               endContent={
